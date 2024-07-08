@@ -1,0 +1,12 @@
+spring:
+  r2dbc:
+    url: r2dbc:h2:mem:///my-db
+  output:
+    ansi:
+      enabled: always
+  main:
+    banner-mode: off
+  lifecycle:
+    timeout-per-shutdown-phase: 1s
+server:
+  port: 8080

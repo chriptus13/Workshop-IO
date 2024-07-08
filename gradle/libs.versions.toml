@@ -1,0 +1,49 @@
+[versions]
+gradlew = "8.7"
+java = "21"
+kotlin = "2.0.0"
+kotlinX = "1.8.1"
+
+logback = "1.5.6"
+kotlinLogging = "3.0.5"
+
+springBoot = "3.3.1"
+jackson = "2.17.1"
+
+r2dbc = "1.0.0.RELEASE"
+
+netty = "4.1.111.Final"
+
+jupiter = "5.10.2"
+
+[libraries]
+kotlinPlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+
+kotlinX-reactor = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactor", version.ref = "kotlinX" }
+kotlinX-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm", version.ref = "kotlinX" }
+kotlinX-jdk8 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8", version.ref = "kotlinX" }
+kotlinX-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinX" }
+
+springBoot-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux", version.ref = "springBoot" }
+springBoot-r2dbc = { module = "org.springframework.boot:spring-boot-starter-data-r2dbc", version.ref = "springBoot" }
+jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+kotlinLogingJvm = { module = "io.github.microutils:kotlin-logging-jvm", version.ref = "kotlinLogging" }
+
+r2dbc-h2 = { module = "io.r2dbc:r2dbc-h2", version.ref = "r2dbc" }
+
+netty-macOsDns = { module = "io.netty:netty-resolver-dns-native-macos", version.ref = "netty" }
+
+[bundles]
+kotlin-jvm = ["kotlin-stdlib", "kotlin-stdlib-jdk8", "kotlin-reflect", "kotlinX-jvm", "kotlinX-jdk8", "logback", "kotlinLogingJvm"]
+spring-coroutines = ["springBoot-webflux", "kotlinX-reactor", "jackson-kotlin"]
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+springBoot = { id = "org.springframework.boot", version.ref = "springBoot" }
