@@ -31,7 +31,6 @@ class UserRepo {
     }
 }
 
-
 @OptIn(ExperimentalCoroutinesApi::class)
 class CoroutinesTest {
 
