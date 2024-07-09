@@ -27,6 +27,14 @@ fun main() {
         logger.info { "Global launch finish" }
     }
 
+    logger.info { "Blocking main thread to wait for global job to finish" }
+    runBlocking {
+        globalJob.join()
+        logger.info { "Global job finished" }
+    }
+
+    readln()
+
     // We can create our own using custom Dispatcher
     val scope = CoroutineScope(Dispatchers.Default)
 
@@ -36,6 +44,14 @@ fun main() {
         logger.info { "Job finished" }
     }
 
+    logger.info { "Blocking main thread to wait for our job to finish" }
+    runBlocking {
+        job.join()
+        logger.info { "Our job finished" }
+    }
+
+    readln()
+
     val result: Deferred<String> = scope.async {
         logger.info { "Launch for result" }
         delay(1_000)
@@ -43,14 +59,8 @@ fun main() {
         foo()
     }
 
-    logger.info { "Blocking main thread to wait for coroutines to finish" }
+    logger.info { "Blocking main thread to wait for async to finish" }
     runBlocking {
-        globalJob.join()
-        logger.info { "Global job finished" }
-
-        job.join()
-        logger.info { "Job finished" }
-
         val str = result.await()
         logger.info { "Finished with $str" }
     }
