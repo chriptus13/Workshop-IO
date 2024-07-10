@@ -20,6 +20,7 @@ suspend fun main() {
             logger.info { "Starting job" }
             try {
                 delay(3_000)
+                logger.info { "Finished job" }
             } catch (ex: CancellationException) {
                 logger.error { "Job cancelled" }
             }

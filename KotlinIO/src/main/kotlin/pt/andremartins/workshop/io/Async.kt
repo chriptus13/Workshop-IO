@@ -8,6 +8,7 @@ import mu.KotlinLogging
 private val logger = KotlinLogging.logger {}
 
 suspend fun main() {
+    logger.info { "Hello World!" }
     coroutineScope {
         val a = async {
             logger.info { "Starting A" }
@@ -29,4 +30,5 @@ suspend fun main() {
         val bb = b.await()
         logger.info { "GOT: $bb" }
     }
+    logger.info { "Bye World!" }
 }

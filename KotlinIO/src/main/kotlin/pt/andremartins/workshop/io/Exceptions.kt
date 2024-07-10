@@ -18,6 +18,7 @@ suspend fun main() {
     try {
         coroutineScope {
             val jobA = launch(start = CoroutineStart.LAZY, context = myDispatcher) {
+                logger.info { "Started job A" }
                 delay(1_500)
                 logger.info { "Throwing" }
                 throw Exception("error")
@@ -42,6 +43,7 @@ suspend fun main() {
     logger.warn { "Starting supervisorScope" }
     supervisorScope {
         val jobA = launch(start = CoroutineStart.LAZY, context = myDispatcher) {
+            logger.info { "Started job A" }
             delay(1_500)
             logger.info { "Throwing" }
             throw Exception("error")
@@ -67,6 +69,7 @@ suspend fun main() {
     logger.warn { "Starting supervisorScope with CoroutineExceptionHandler" }
     supervisorScope {
         val jobA = launch(start = CoroutineStart.LAZY, context = myDispatcher + coexh) {
+            logger.info { "Started job A" }
             delay(1_500)
             logger.info { "Throwing" }
             throw Exception("error")
